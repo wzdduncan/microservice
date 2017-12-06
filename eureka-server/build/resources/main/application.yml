@@ -1,0 +1,23 @@
+server:
+  port: 8761
+
+management:
+  context-path: /eureka-server
+
+# 注册中心服务端配置
+eureka:
+  instance:
+    hostname: eureka-server-peer1
+    statusPageUrl: http://${eureka.instance.hostname}/info
+    healthCheckUrl: http://${eureka.instance.hostname}/health
+    homePageUrl: http://${eureka.instance.hostname}/
+  client:
+#   本服务端不进行注册，如果服务端多实例，则需要设置为true
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://localhost:${server.port}/eureka/
+
+
+
